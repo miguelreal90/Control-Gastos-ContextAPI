@@ -1,22 +1,26 @@
 // Definimos los tipos de las acciones
-type BudgetAction = 
-  | { type: 'ADD_EXPENSE'; payload: { amount: number; description: string } }
-  | { type: 'REMOVE_EXPENSE'; payload: { id: number } }
-  | { type: 'UPDATE_BUDGET'; payload: { newBudget: number } };
+export type BudgetActions = 
+    {type:'add budget',payload:{budget:number}}
+
+
 
 // Definimos la estructura del estado
-type BudgetState = {
-    budget: number;
-    expenses: { id: number; amount: number; description: string }[];
+export type BudgetState = {
+    budget: number
 }
 
 // Estado inicial
-const initialState: BudgetState = {
-  budget: 0,
-  expenses: []
-};
+export const initialState: BudgetState = {
+    budget: 0
+}
 
 // Reducer
-function budgetReducer(state: BudgetState = initialState, action: BudgetAction): BudgetState {
-
+export const BudgetReducer = (
+    state:BudgetState=initialState,
+    actions:BudgetActions
+)=>{
+    if (actions.type==='add budget') {
+        return{...state,budget:actions.payload.budget}
+    }
+    return state
 }
