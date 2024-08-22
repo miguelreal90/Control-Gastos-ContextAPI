@@ -14,7 +14,8 @@ export const BudgetProvider=({children}:BudgetProviderProps)=>{
     return(
         <BudgetContext.Provider
         value={{
-            state,dispatch
+            state,
+            dispatch,
         }}
         >
             {children}
