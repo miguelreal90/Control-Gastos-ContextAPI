@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import {PlusCircleIcon} from '@heroicons/react/24/solid'
 import { useBudget } from '../hooks/useBudget'
+import ExpenceForm from './ExpenceForm'
 export default function ExpenseModal() {
     const {state,dispatch}=useBudget()
     return (
@@ -42,7 +43,7 @@ export default function ExpenseModal() {
                 >
                     <Dialog.Panel className="w-full max-w-3xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
         
-
+                        <ExpenceForm/>
         
                     </Dialog.Panel>
                 </Transition.Child>
