@@ -6,7 +6,8 @@ export type BudgetActions =
     {type:'add budget',payload:{budget:number}}|
     {type:'Show Modal'}|
     {type:'close modal'}|
-    {type:'add-expense',payload:{expence:DraftExpence}}
+    {type:'add-expense',payload:{expence:DraftExpence}}|
+    {type:'remove-expence',payload:{id:Expence["id"]}}
 
 
 // Definimos la estructura del estado
@@ -43,11 +44,17 @@ export const BudgetReducer = (
     if (actions.type==='close modal') {
         return{...state,show:false}
     }
-    const expence=createExpense(actions.payload.expence)
+
     if (actions.type==='add-expense') {
-        
+        const expence=createExpense(actions.payload.expence)
         return{...state,
             expences:[...state.expences,expence],show:false}
+    }
+    if (actions.type==='remove-expence'){
+        return{...state,
+            expences:state.expences.filter(expense=>expense.id !== actions.payload.id)
+
+        }
     }
     return state
 }
